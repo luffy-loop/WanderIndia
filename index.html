@@ -2,248 +2,153 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Incredible India | Tourist Website</title>
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-body{
-    background:#f6f7f8;
-    color:#2e2e2e;
-}
-
-header{
-    background:#6f8fa3;
-    color:white;
-    text-align:center;
-    padding:30px 20px;
-}
-
-nav{
-    background:#5f7f92;
-    display:flex;
-    justify-content:center;
-}
-
-nav a{
-    color:white;
-    text-decoration:none;
-    padding:14px 24px;
-}
-
-nav a:hover{
-    background:#4e6b7a;
-    transition: background 0.3s ease;
-}
-
-.hero{
-    position:relative;
-    height:420px;
-    background:url('tajmahal.jpg') center top/cover no-repeat;
-}
-
-.hero::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0.05));
-}
-
-.hero-text{
-    position:absolute;
-    bottom:35px;
-    left:35px;
-    color:white;
-    max-width:600px;
-    text-shadow:0 3px 8px rgba(0,0,0,0.8);
-}
-
-.hero-text h2{
-    font-size:36px;
-    margin-bottom:10px;
-    font-weight:600;
-}
-
-
-.hero-text p{
-    font-size:18px;
-}
-
-main{
-    max-width:1100px;
-    margin:35px auto;
-    padding:0 15px;
-}
-
-section{
-    background:white;
-    padding:25px;
-    border-radius:10px;
-    margin-bottom:25px;
-    border:1px solid #e2e2e2;
-}
-
-section h2{
-    text-align:center;
-    margin-bottom:20px;
-    color:#355f6b;
-}
-
-.places, .gallery{
-    display:flex;
-    flex-wrap:wrap;
-    gap:20px;
-}
-
-.place, .gallery a{
-    flex:1 1 280px;
-    border-radius:10px;
-    overflow:hidden;
-    border:1px solid #ddd;
-}
-
-.place img, .gallery img{
-    width:100%;
-    height:200px;
-    object-fit:cover;
-}
-
-.place-content{
-    padding:16px;
-    line-height:1.6;
-}
-
-.lightbox{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.9);
-    display:none;
-    align-items:center;
-    justify-content:center;
-    z-index:1000;
-    color:white;
-}
-
-.lightbox:target{
-    display:flex;
-}
-
-.lightbox-content{
-    background:#355f6b;
-    padding:20px;
-    border-radius:12px;
-    max-width:90%;
-    text-align:center;
-}
-
-.lightbox img{
-    max-width:100%;
-    max-height:60vh;
-    border-radius:10px;
-    margin-bottom:15px;
-}
-
-.close{
-    position:absolute;
-    top:20px;
-    right:30px;
-    font-size:30px;
-    color:white;
-    text-decoration:none;
-}
-
-/* SECTION FILTER */
-main:has(section:target) section{
-    display:none;
-}
-
-main:has(section:target) section:target{
-    display:block;
-}
-
-footer{
-    background:#5f7f92;
-    color:white;
-    text-align:center;
-    padding:15px;
-}
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WanderIndia Tourism</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
-    <h1>Incredible India</h1>
-    <p>Explore the Beauty and Heritage of India</p>
-</header>
-
-<nav>
-    <a href="#about">About</a>
-    <a href="#places">Tourist Places</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#contact">Contact</a>
-</nav>
-
-<div class="hero">
-    <div class="hero-text">
-        <h2>Discover Incredible India</h2>
-        <p>Heritage • Culture • Nature</p>
-    </div>
+<div id="welcomePopup" class="popup">
+<div class="popup-box">
+<img src="images/travel.jpg" class="popup-img">
+<div class="popup-text">
+<h2>Welcome to WanderIndia</h2>
+<p>Explore the beauty of India's most iconic destinations.</p>
+<button onclick="closePopup()">Explore</button>
+</div>
+</div>
 </div>
 
-<main>
+<header>
+<h1>WanderIndia</h1>
+<button onclick="toggleTheme()">🌙 Theme</button>
+</header>
 
-<section id="about">
-    <h2>About India Tourism</h2>
-    <p>India offers rich culture, heritage monuments, spiritual destinations and breathtaking landscapes.</p>
+<nav class="navbar">
+<a href="tourism.html">Home</a>
+<a href="destinations.html">Destinations</a>
+<a href="gallery.html">Gallery</a>
+<a href="booking.html">Booking</a>
+<a href="login.html">Login</a>
+<a href="signup.html">Signup</a>
+<a href="#" onclick="logout()">Logout</a>
+<a href="wishlist.html">Wishlist ❤️ (<span id="wishlistCount">0</span>)</a>
+</nav>
+
+<section class="hero">
+<div class="hero-content">
+<h2>Explore Incredible India</h2>
+<p>Discover India's culture, history and breathtaking destinations.</p>
+<a href="destinations.html">
+<button>Explore Tour Packages</button>
+</a>
+</div>
 </section>
 
-<section id="places">
-    <h2>Famous Tourist Places</h2>
-    <div class="places">
-        <div class="place"><a href="#taj"><img src="taj-mahal.jpeg"></a><div class="place-content"><b>Taj Mahal</b><br>Agra</div></div>
-        <div class="place"><a href="#india"><img src="india-gate.jpg"></a><div class="place-content"><b>India Gate</b><br>Delhi</div></div>
-        <div class="place"><a href="#charminar"><img src="charminar.jpg"></a><div class="place-content"><b>Charminar</b><br>Hyderabad</div></div>
-    </div>
-</section>
+<section>
+<h2 class="section-title">Popular Destinations</h2>
 
-<section id="gallery">
-    <h2>Gallery</h2>
-    <div class="gallery">
-        <a href="#qutub"><img src="qutub-minar.jpg"></a>
-        <a href="#kerala"><img src="kerala.jpg"></a>
-        <a href="#ganga"><img src="Ganga.jpg"></a>
-        <a href="#golden"><img src="golden-temple.jpg"></a>
-        <a href="#temple"><img src="temple-karnataka.jpg"></a>
-    </div>
-</section>
+<div class="grid-container">
 
-<section id="contact">
-    <h2>Contact</h2>
-    <p>Email: info@indiatourism.com</p>
-    <p>Phone: +91 98765 43210</p>
-</section>
+<div class="card">
+<img src="images/Ganga-Aarti-Varanasi-1.jpg">
+<h3>Varanasi Ganga Aarti</h3>
+<p>📍 Varanasi, Uttar Pradesh</p>
+<p>⭐ Rating: 4.8</p>
+<p>💰 Avg Tour Cost: ₹1800</p>
+<p>🌤 Best Time: Oct – March</p>
+<button onclick="bookPlace('Varanasi Ganga Aarti')">Book Now</button>
+</div>
 
-</main>
+<div class="card">
+<img src="images/qutub.webp">
+<h3>Qutub Minar</h3>
+<p>📍 Delhi</p>
+<p>⭐ Rating: 4.7</p>
+<p>💰 Avg Tour Cost: ₹1600</p>
+<p>🌤 Best Time: Oct – Feb</p>
+<button onclick="bookPlace('Qutub Minar')">Book Now</button>
+</div>
+
+<div class="card">
+<img src="images/gate.webp">
+<h3>Gateway of India</h3>
+<p>📍 Mumbai, Maharashtra</p>
+<p>⭐ Rating: 4.7</p>
+<p>💰 Avg Tour Cost: ₹1700</p>
+<p>🌤 Best Time: Nov – Feb</p>
+<button onclick="bookPlace('Gateway of India')">Book Now</button>
+</div>
+
+<div class="card">
+<img src="images/ooty.jpg">
+<h3>Ooty</h3>
+<p>📍 Tamil Nadu</p>
+<p>⭐ Rating: 4.8</p>
+<p>💰 Avg Tour Cost: ₹3500</p>
+<p>🌤 Best Time: April – June</p>
+<button onclick="bookPlace('Ooty')">Book Now</button>
+</div>
+
+<div class="card">
+<img src="images/dar.jpg">
+<h3>Darjeeling Tea Gardens</h3>
+<p>📍 West Bengal</p>
+<p>⭐ Rating: 4.8</p>
+<p>💰 Avg Tour Cost: ₹3200</p>
+<p>🌤 Best Time: March – May</p>
+<button onclick="bookPlace('Darjeeling Tea Gardens')">Book Now</button>
+</div>
+
+<div class="card">
+<img src="images/goa.jpg">
+<h3>Goa Beaches</h3>
+<p>📍 Goa</p>
+<p>⭐ Rating: 4.8</p>
+<p>💰 Avg Tour Cost: ₹4000</p>
+<p>🌤 Best Time: Nov – Feb</p>
+<button onclick="bookPlace('Goa Beaches')">Book Now</button>
+</div>
+
+<div class="card">
+<img src="images/keralaa.jpg">
+<h3>Kerala Backwaters</h3>
+<p>📍 Kerala</p>
+<p>⭐ Rating: 4.8</p>
+<p>💰 Avg Tour Cost: ₹4200</p>
+<p>🌤 Best Time: Sept – March</p>
+<button onclick="bookPlace('Kerala Backwaters')">Book Now</button>
+</div>
+
+<div class="card">
+<img src="images/kashmir.jpg">
+<h3>Ladakh</h3>
+<p>📍 Northern Himalayas</p>
+<p>⭐ Rating: 4.9</p>
+<p>💰 Avg Tour Cost: ₹5000</p>
+<p>🌤 Best Time: May – Sept</p>
+<button onclick="bookPlace('Ladakh')">Book Now</button>
+</div>
+
+<div class="card">
+<img src="images/ramoji.jpg">
+<h3>Ramoji Film City</h3>
+<p>📍 Hyderabad, Telangana</p>
+<p>⭐ Rating: 4.6</p>
+<p>💰 Avg Tour Cost: ₹2000</p>
+<p>🌤 Best Time: Oct – Feb</p>
+<button onclick="bookPlace('Ramoji Film City')">Book Now</button>
+</div>
+
+</div>
+</section>
 
 <footer>
-<p>© 2026 WanderIndia | Tourist Website Project</p>
+<p>© 2026 WanderIndia | Tourism Capstone Project</p>
 </footer>
 
-<!-- LIGHTBOX DETAILS -->
-<div id="taj" class="lightbox"><a href="#" class="close">&times;</a><div class="lightbox-content"><img src="taj-mahal.jpeg"><h3>Taj Mahal</h3><p>Agra, Uttar Pradesh</p><p>UNESCO World Heritage Site and symbol of love.</p></div></div>
-<div id="india" class="lightbox"><a href="#" class="close">&times;</a><div class="lightbox-content"><img src="india-gate.jpg"><h3>India Gate</h3><p>New Delhi</p><p>War memorial for Indian soldiers.</p></div></div>
-<div id="charminar" class="lightbox"><a href="#" class="close">&times;</a><div class="lightbox-content"><img src="charminar.jpg"><h3>Charminar</h3><p>Hyderabad</p><p>Iconic Indo-Islamic monument.</p></div></div>
-<div id="qutub" class="lightbox"><a href="#" class="close">&times;</a><div class="lightbox-content"><img src="qutub-minar.jpg"><h3>Qutub Minar</h3><p>Delhi</p><p>Tallest brick minaret in the world.</p></div></div>
-<div id="kerala" class="lightbox"><a href="#" class="close">&times;</a><div class="lightbox-content"><img src="kerala.jpg"><h3>Kerala Backwaters</h3><p>Kerala</p><p>Peaceful waterways surrounded by greenery.</p></div></div>
-<div id="ganga" class="lightbox"><a href="#" class="close">&times;</a><div class="lightbox-content"><img src="Ganga.jpg"><h3>Ganga Ghats</h3><p>Varanasi</p><p>Spiritual heart of India.</p></div></div>
-<div id="golden" class="lightbox"><a href="#" class="close">&times;</a><div class="lightbox-content"><img src="golden-temple.jpg"><h3>Golden Temple</h3><p>Amritsar</p><p>Holiest shrine of Sikhism.</p></div></div>
-<div id="temple" class="lightbox"><a href="#" class="close">&times;</a><div class="lightbox-content"><img src="temple-karnataka.jpg"><h3>Temple Architecture</h3><p>Karnataka</p><p>Ancient stone-carved temples.</p></div></div>
+<script src="script.js"></script>
 
 </body>
 </html>
